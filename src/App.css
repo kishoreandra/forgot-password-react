@@ -1,4 +1,67 @@
-.modal-content{
+.modal-content {
   width: 446px;
   height: 399px;
+}
+
+.modal-header,
+.modal-footer,
+.modal-body {
+  border: none;
+  padding: 0;
+}
+
+.modal-title {
+  font-size: 28px;
+  padding: 40px 0 0 40px;
+}
+
+.cancel-svg {
+  width: 14.2px;
+  height: 14.2px;
+  align-self: flex-start;
+  margin: 21px 14px 0 0;
+  cursor: pointer;
+}
+
+.email-msg {
+  padding: 30px 0 0 40px;
+  margin-bottom: 33px;
+  color: black;
+}
+
+.email-grp {
+  margin-left: 40px;
+}
+
+.input-email {
+  /* margin-right: 50px; */
+  width: 88%;
+}
+
+.save-btn {
+  margin: 0 40px 40px 0;
+  width: 130px;
+  height: 52px;
+  border-radius: unset;
+  background-color: #2d8bc2;
+  font-size: 16px;
+}
+
+input::placeholder {
+  color: black;
+}
+
+.form-group.required .control-label:after {
+  color: #b50025;
+  content: "*";
+  margin-left: 1px;
+}
+
+.form-control.input-email.invalid {
+  border-bottom: 2px solid #b50025;
+}
+
+.invalid-email-msg {
+  color: red;
+  padding-left: 40px;
 }
