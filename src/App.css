@@ -4,7 +4,7 @@
 }
 .modal-content.sent {
   width: 446px;
-  height: 303px;
+  height: 310px;
 }
 
 .modal-header,
@@ -84,5 +84,6 @@ input::placeholder {
 }
 
 .create-account-link {
-  padding-left: 40px;
+  padding: 0 0 30px 40px;
+  margin: 0;
 }

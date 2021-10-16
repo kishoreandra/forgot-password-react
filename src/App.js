@@ -5,15 +5,14 @@ function App() {
   const [onSave, setOnSave] = useState(true);
   const [email, setEmail] = useState("");
   const [validEmail, setValidEmail] = useState(true);
+
   const handleSave = () => {
-    // if (email && validEmail) {
-    //   setOnSave(!onSave);
-    // }
     const isValid = ValidateEmail(email);
     if (isValid) {
       setOnSave(!onSave);
     }
   };
+
   function ValidateEmail(email) {
     const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (email.match(mailformat)) {
@@ -25,6 +24,12 @@ function App() {
     }
   }
 
+  function openModal() {
+    setOnSave(true);
+    setEmail("");
+    setValidEmail(true);
+  }
+
   return (
     <div>
       <button
@@ -32,6 +37,7 @@ function App() {
         className="btn btn-primary"
         data-bs-toggle="modal"
         data-bs-target="#staticBackdrop"
+        onClick={openModal}
       >
         Launch static backdrop modal
       </button>
@@ -53,6 +59,7 @@ function App() {
                   </h5>
                   <img
                     className="cancel-svg"
+                    alt="close"
                     data-bs-dismiss="modal"
                     src="https://img.icons8.com/external-becris-lineal-becris/64/000000/external-cancel-mintab-for-ios-becris-lineal-becris.png"
                   />
@@ -61,7 +68,7 @@ function App() {
                   <p className="email-msg">
                     Enter the e-mail address linked to your account below.
                   </p>
-                  <div class="form-group email-grp required">
+                  <div className="form-group email-grp required">
                     <label
                       className="control-label"
                       htmlFor="exampleInputEmail1"
@@ -71,7 +78,7 @@ function App() {
                     <input
                       type="email"
                       value={email}
-                      class={
+                      className={
                         validEmail
                           ? `form-control input-email`
                           : `form-control input-email invalid`
@@ -86,7 +93,10 @@ function App() {
                   </div>
                   {!validEmail && (
                     <p className="invalid-email-msg">
-                      <img src="https://img.icons8.com/material-rounded/24/fa314a/break.png" />
+                      <img
+                        alt="caution"
+                        src="https://img.icons8.com/material-rounded/24/fa314a/break.png"
+                      />
                       &nbsp;Please enter a valid email address
                       <br />
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Ex.
@@ -113,6 +123,7 @@ function App() {
                   </h1>
                   <img
                     className="cancel-svg"
+                    alt="close"
                     data-bs-dismiss="modal"
                     src="https://img.icons8.com/external-becris-lineal-becris/64/000000/external-cancel-mintab-for-ios-becris-lineal-becris.png"
                   />
@@ -127,6 +138,8 @@ function App() {
                     If you don't receive an e-mail, then no account is linked to
                     that e-mail address.
                   </p>
+                </div>
+                <div className="modal-footer">
                   <a className="create-account-link" href="#">
                     You can create your account here
                   </a>
