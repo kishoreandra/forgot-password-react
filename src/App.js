@@ -6,22 +6,22 @@ function App() {
   const [email, setEmail] = useState("");
   const [validEmail, setValidEmail] = useState(true);
   const handleSave = () => {
-    // const isValid = ValidateEmail(email);
-    if (validEmail) {
-      setOnSave(!onSave);
-    }
-    // if (isValid) {
+    // if (email && validEmail) {
     //   setOnSave(!onSave);
     // }
+    const isValid = ValidateEmail(email);
+    if (isValid) {
+      setOnSave(!onSave);
+    }
   };
   function ValidateEmail(email) {
     const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (email.match(mailformat)) {
       setValidEmail(true);
-      // return true;
+      return true;
     } else {
       setValidEmail(false);
-      // return false;
+      return false;
     }
   }
 
@@ -39,26 +39,18 @@ function App() {
       <div
         className="modal fade"
         id="staticBackdrop"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
         tabIndex="-1"
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
       >
         <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content">
+          <div className={onSave ? "modal-content" : "modal-content sent"}>
             {onSave ? (
               <>
                 <div className="modal-header">
                   <h5 className="modal-title" id="staticBackdropLabel">
                     Forgot password
                   </h5>
-                  {/* <button
-                    type="button"
-                    className="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button> */}
                   <img
                     className="cancel-svg"
                     data-bs-dismiss="modal"
@@ -88,13 +80,17 @@ function App() {
                       placeholder="johndoe12@gmail.com"
                       onChange={(e) => {
                         setEmail(e.target.value);
-                        ValidateEmail(e.target.value);
+                        // ValidateEmail(e.target.value);
                       }}
                     />
                   </div>
                   {!validEmail && (
                     <p className="invalid-email-msg">
-                      Modal body text goes here.
+                      <img src="https://img.icons8.com/material-rounded/24/fa314a/break.png" />
+                      &nbsp;Please enter a valid email address
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Ex.
+                      sometext@domain.com)
                     </p>
                   )}
                 </div>
@@ -112,20 +108,28 @@ function App() {
             ) : (
               <>
                 <div className="modal-header">
-                  <button
-                    type="button"
-                    className="btn-close"
+                  <h1 className="modal-title" id="staticBackdropLabel">
+                    E-mail sent!
+                  </h1>
+                  <img
+                    className="cancel-svg"
                     data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
+                    src="https://img.icons8.com/external-becris-lineal-becris/64/000000/external-cancel-mintab-for-ios-becris-lineal-becris.png"
+                  />
                 </div>
                 <div className="modal-body">
-                  <ul>
-                    <li>fdsfffffffffffffffffsdfdsddsf</li>
-                    <li>fdsfshttttttttttttttttttt</li>
-                    <li>zdsssssssssssssssssssss</li>
-                    <li>kjfghsdffffffffffffffff</li>
-                  </ul>
+                  <p className="no-email-msg">
+                    You will receive a link via e-mail in a few minutes.
+                    <br />
+                    Don't forget to check your spam.
+                  </p>
+                  <p className="no-email-msg2">
+                    If you don't receive an e-mail, then no account is linked to
+                    that e-mail address.
+                  </p>
+                  <a className="create-account-link" href="#">
+                    You can create your account here
+                  </a>
                 </div>
               </>
             )}

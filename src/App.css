@@ -2,6 +2,10 @@
   width: 446px;
   height: 399px;
 }
+.modal-content.sent {
+  width: 446px;
+  height: 303px;
+}
 
 .modal-header,
 .modal-footer,
@@ -28,6 +32,16 @@
   margin-bottom: 33px;
   color: black;
 }
+.no-email-msg {
+  padding: 30px 0 15px 40px;
+  color: black;
+  margin: 0;
+}
+.no-email-msg2 {
+  padding: 0 0 30px 40px;
+  color: black;
+  margin: 0;
+}
 
 .email-grp {
   margin-left: 40px;
@@ -36,6 +50,9 @@
 .input-email {
   /* margin-right: 50px; */
   width: 88%;
+  border: none;
+  background: #f8f8f8 0% 0% no-repeat padding-box;
+  margin-bottom: 10px;
 }
 
 .save-btn {
@@ -58,10 +75,14 @@ input::placeholder {
 }
 
 .form-control.input-email.invalid {
-  border-bottom: 2px solid #b50025;
+  border-bottom: 2px solid #b32f2d;
 }
 
 .invalid-email-msg {
-  color: red;
+  color: #b32f2d;
+  padding-left: 40px;
+}
+
+.create-account-link {
   padding-left: 40px;
 }
