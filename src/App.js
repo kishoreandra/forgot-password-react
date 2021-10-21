@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { validateEmail } from "./utils/ValidationUtils";
 import "./App.css";
 
 function App() {
@@ -7,22 +8,14 @@ function App() {
   const [validEmail, setValidEmail] = useState(true);
 
   const handleSave = () => {
-    const isValid = ValidateEmail(email);
+    const isValid = validateEmail(email);
     if (isValid) {
+      setValidEmail(true);
       setOnSave(!onSave);
+    }else{
+      setValidEmail(false);
     }
   };
-
-  function ValidateEmail(email) {
-    const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (email.match(mailformat)) {
-      setValidEmail(true);
-      return true;
-    } else {
-      setValidEmail(false);
-      return false;
-    }
-  }
 
   function openModal() {
     setOnSave(true);
@@ -87,7 +80,7 @@ function App() {
                       placeholder="johndoe12@gmail.com"
                       onChange={(e) => {
                         setEmail(e.target.value);
-                        // ValidateEmail(e.target.value);
+                        // validateEmail(e.target.value);
                       }}
                     />
                   </div>
